@@ -3,10 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
+    <title>Adrian Reiter | Machine Learning Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --surface-color: #f9fafb;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-color: #e5e7eb;
+            --max-width: 1024px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        header.scrolled {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 100px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--text-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            background-color: #000;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            letter-spacing: -0.02em;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 12px;
+            opacity: 0.5;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 32px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .project-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .project-links a:hover {
+            border-color: var(--text-primary);
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--surface-color);
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .contact-link:hover {
+            background: #e5e7eb;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my new website hosted on GitHub Pages.</p>
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">Adrian Reiter</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Machine Learning Engineer<br><span style="color: var(--text-secondary); font-weight: 400; font-size: 0.8em;">Solving complexity with AI.</span></h1>
+                <p>I build scalable machine learning systems and data-driven solutions. Specialized in Deep Learning, Computer Vision, and MLOps.</p>
+                <a href="#projects" class="cta-button">View Projects</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">About Me</div>
+                <h2>Bridging Data Science & Engineering</h2>
+                <p class="about-text">
+                    I am a Machine Learning Engineer passionate about architecting robust AI systems. With a strong foundation in both software engineering and data science, I focus on bridging the gap between research models and production-ready applications. My expertise lies in designing neural network architectures, optimizing inference pipelines, and implementing reproducible MLOps workflows.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-title">Expertise</div>
+                <h2>Technical Toolkit</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Machine Learning</h3>
+                        <ul class="skill-list">
+                            <li>Deep Learning (PyTorch, TensorFlow)</li>
+                            <li>Computer Vision & NLP</li>
+                            <li>Reinforcement Learning</li>
+                            <li>Model Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data Science</h3>
+                        <ul class="skill-list">
+                            <li>Statistical Analysis</li>
+                            <li>Data Visualization</li>
+                            <li>Feature Engineering</li>
+                            <li>Hypothesis Testing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Engineering & MLOps</h3>
+                        <ul class="skill-list">
+                            <li>Python, C++, SQL</li>
+                            <li>Docker & Kubernetes</li>
+                            <li>CI/CD (Jenkins, GitHub Actions)</li>
+                            <li>MLflow, Grafana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-title">Portfolio</div>
+                <h2>Selected Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Neural Network Framework</h3>
+                        <p>A custom deep learning framework built from scratch in C++ and Python, featuring automatic differentiation and GPU acceleration support.</p>
+                        <div class="project-links">
+                            <a href="#">View Code</a>
+                            <a href="#">Documentation</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Vision Analytics Engine</h3>
+                        <p>Real-time object detection system deployed on edge devices. Utilizes quantized CNNs for low-latency inference in industrial environments.</p>
+                        <div class="project-links">
+                            <a href="#">View Code</a>
+                            <a href="#">Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Sentiment Analysis Pipeline</h3>
+                        <p>End-to-end NLP pipeline for analyzing customer feedback. Integrates Transformer models with a streaming data architecture.</p>
+                        <div class="project-links">
+                            <a href="#">View Code</a>
+                            <a href="#">Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="border-bottom: none;">
+            <div class="container">
+                <div class="section-title">Contact</div>
+                <h2>Let's Collaborate</h2>
+                <p style="margin-bottom: 32px; color: var(--text-secondary);">Open to opportunities in Machine Learning Engineering and AI Research.</p>
+                <div class="contact-links">
+                    <a href="mailto:areiter.de@gmail.com" class="contact-link">Email</a>
+                    <a href="https://www.linkedin.com/in/reiteradrian/" target="_blank" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/AdrianReiter" target="_blank" class="contact-link">GitHub</a>
+                    <a href="#" class="contact-link">Resume</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 40px;">
+        <div class="container" style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+            &copy; 2025 Adrian Reiter.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
