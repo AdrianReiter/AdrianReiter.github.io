@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Reiter | Machine Learning Engineer</title>
     <meta name="description" content="Adrian Reiter is a Machine Learning Engineer building edge inference systems, domain-specialized LLMs, and full-stack AI products.">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#1c1917">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Adrian Reiter | Machine Learning Engineer">
     <meta property="og:description" content="Edge inference, domain-specialized LLMs, and full-stack AI products. From research models to production systems.">
@@ -16,18 +16,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --surface: #f8fafc;
-            --surface-2: #f1f5f9;
-            --text: #0f172a;
-            --muted: #475569;
-            --faint: #94a3b8;
-            --accent: #2563eb;
-            --accent-2: #7c3aed;
-            --accent-soft: rgba(37, 99, 235, 0.10);
-            --border: #e2e8f0;
-            --header-bg: rgba(255, 255, 255, 0.82);
-            --shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.18);
+            --bg: #faf8f4;
+            --surface: #f3efe8;
+            --surface-2: #ebe6dd;
+            --text: #1c1917;
+            --muted: #57534e;
+            --faint: #a8a29e;
+            --accent: #b4532a;
+            --accent-soft: rgba(180, 83, 42, 0.12);
+            --border: #e4ded4;
+            --header-bg: rgba(250, 248, 244, 0.85);
+            --shadow: 0 20px 40px -20px rgba(28, 25, 23, 0.22);
             --max-width: 1080px;
             --radius: 14px;
             --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -35,17 +34,16 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #0b1120;
-                --surface: #111a2e;
-                --surface-2: #172238;
-                --text: #e6edf7;
-                --muted: #a3b1c6;
-                --faint: #64748b;
-                --accent: #60a5fa;
-                --accent-2: #a78bfa;
-                --accent-soft: rgba(96, 165, 250, 0.14);
-                --border: #1f2b44;
-                --header-bg: rgba(11, 17, 32, 0.82);
+                --bg: #141210;
+                --surface: #1c1917;
+                --surface-2: #262220;
+                --text: #ede8e0;
+                --muted: #b0a89e;
+                --faint: #6e675f;
+                --accent: #e08a5a;
+                --accent-soft: rgba(224, 138, 90, 0.14);
+                --border: #2e2926;
+                --header-bg: rgba(20, 18, 16, 0.85);
                 --shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
             }
         }
@@ -122,7 +120,7 @@
             font-size: 0.75rem;
             font-weight: 800;
             color: #fff;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            background: var(--accent);
             letter-spacing: 0;
         }
 
@@ -201,8 +199,8 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #22c55e;
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+            background: #4d9a63;
+            box-shadow: 0 0 0 4px rgba(77, 154, 99, 0.2);
         }
 
         .hero h1 {
@@ -222,12 +220,7 @@
             color: var(--muted);
         }
 
-        .gradient-text {
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        .accent-text { color: var(--accent); }
 
         .hero p {
             font-size: 1.2rem;
@@ -262,7 +255,7 @@
         .btn-primary {
             background: var(--text);
             color: var(--bg);
-            box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.5);
+            box-shadow: 0 10px 24px -12px rgba(28, 25, 23, 0.5);
         }
 
         .btn-secondary {
@@ -313,7 +306,7 @@
             content: "";
             width: 22px;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            background: var(--accent);
             border-radius: 2px;
         }
 
@@ -401,7 +394,7 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            background: var(--accent);
             opacity: 0.9;
         }
 
@@ -549,12 +542,12 @@
             right: -180px;
             bottom: -260px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.35), transparent 65%);
+            background: radial-gradient(circle, rgba(224, 138, 90, 0.28), transparent 65%);
             pointer-events: none;
         }
 
-        .contact-card .section-title { color: #93c5fd; }
-        .contact-card .section-title::before { background: #93c5fd; }
+        .contact-card .section-title { color: #e8a57a; }
+        .contact-card .section-title::before { background: #e8a57a; }
 
         .contact-card h2 { color: inherit; margin-bottom: 14px; }
 
@@ -675,7 +668,7 @@
             <div class="container">
                 <div class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>Open to ML engineering opportunities</div>
                 <h1 class="reveal" data-delay="1">Machine Learning Engineer
-                    <span class="sub">Bridging <span class="gradient-text">research models</span> and production systems.</span>
+                    <span class="sub">Bridging <span class="accent-text">research models</span> and production systems.</span>
                 </h1>
                 <p class="reveal" data-delay="2">I build scalable AI products and high-performance inference engines. From C++ state estimation on embedded hardware to domain-tuned LLMs and the full-stack applications that put them in users' hands.</p>
                 <div class="hero-actions reveal" data-delay="3">
@@ -773,10 +766,10 @@
                             <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                                 <defs>
                                     <linearGradient id="vio-bg" x1="0" y1="0" x2="1" y2="1">
-                                        <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/>
+                                        <stop offset="0" stop-color="#1c1917"/><stop offset="1" stop-color="#2e2521"/>
                                     </linearGradient>
                                     <linearGradient id="vio-path" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/>
+                                        <stop offset="0" stop-color="#e08a5a"/><stop offset="1" stop-color="#f0c39a"/>
                                     </linearGradient>
                                     <pattern id="vio-grid" width="40" height="40" patternUnits="userSpaceOnUse">
                                         <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.06"/>
@@ -784,7 +777,7 @@
                                 </defs>
                                 <rect width="640" height="360" fill="url(#vio-bg)"/>
                                 <rect width="640" height="360" fill="url(#vio-grid)"/>
-                                <g fill="#93c5fd" fill-opacity="0.55">
+                                <g fill="#d6c9b8" fill-opacity="0.55">
                                     <circle cx="92" cy="88" r="2.5"/><circle cx="150" cy="61" r="2"/><circle cx="214" cy="118" r="2.5"/><circle cx="268" cy="72" r="2"/>
                                     <circle cx="330" cy="140" r="2.5"/><circle cx="392" cy="96" r="2"/><circle cx="448" cy="168" r="2.5"/><circle cx="512" cy="110" r="2"/>
                                     <circle cx="560" cy="200" r="2.5"/><circle cx="130" cy="240" r="2"/><circle cx="240" cy="290" r="2.5"/><circle cx="360" cy="262" r="2"/>
@@ -795,9 +788,9 @@
                                 <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.5" fill="none">
                                     <path d="M230 190 l-14 -6 m14 6 l-6 -14"/><path d="M390 210 l-14 -6 m14 6 l-6 -14"/><path d="M540 150 l-14 -6 m14 6 l-6 -14"/>
                                 </g>
-                                <circle cx="620" cy="120" r="6" fill="#a78bfa"/>
-                                <circle cx="620" cy="120" r="14" fill="none" stroke="#a78bfa" stroke-opacity="0.5"/>
-                                <text x="36" y="330" font-family="JetBrains Mono, monospace" font-size="13" fill="#93c5fd" fill-opacity="0.85">ES-EKF · 15-state · 6-DOF trajectory</text>
+                                <circle cx="620" cy="120" r="6" fill="#e08a5a"/>
+                                <circle cx="620" cy="120" r="14" fill="none" stroke="#e08a5a" stroke-opacity="0.5"/>
+                                <text x="36" y="330" font-family="JetBrains Mono, monospace" font-size="13" fill="#e8a57a" fill-opacity="0.85">ES-EKF · 15-state · 6-DOF trajectory</text>
                             </svg>
                         </div>
                         <div class="project-content">
@@ -819,10 +812,10 @@
                             <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                                 <defs>
                                     <linearGradient id="qwen-bg" x1="0" y1="0" x2="1" y2="1">
-                                        <stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#0f172a"/>
+                                        <stop offset="0" stop-color="#2e2521"/><stop offset="1" stop-color="#1c1917"/>
                                     </linearGradient>
                                     <linearGradient id="qwen-bar" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/>
+                                        <stop offset="0" stop-color="#e08a5a"/><stop offset="1" stop-color="#f0c39a"/>
                                     </linearGradient>
                                 </defs>
                                 <rect width="640" height="360" fill="url(#qwen-bg)"/>
@@ -837,14 +830,14 @@
                                     <rect x="28" y="126" width="244" height="16" rx="4" fill="url(#qwen-bar)" fill-opacity="0.35"/>
                                 </g>
                                 <g transform="translate(400 90)" font-family="JetBrains Mono, monospace" font-size="13">
-                                    <rect width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
-                                    <text x="16" y="22" fill="#bfdbfe">ISO 13485</text>
-                                    <rect y="50" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
-                                    <text x="16" y="72" fill="#bfdbfe">IEC 62304</text>
-                                    <rect y="100" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
-                                    <text x="16" y="122" fill="#bfdbfe">ISO 14971</text>
+                                    <rect width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#e8a57a" stroke-opacity="0.5"/>
+                                    <text x="16" y="22" fill="#efe4d6">ISO 13485</text>
+                                    <rect y="50" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#e8a57a" stroke-opacity="0.5"/>
+                                    <text x="16" y="72" fill="#efe4d6">IEC 62304</text>
+                                    <rect y="100" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#e8a57a" stroke-opacity="0.5"/>
+                                    <text x="16" y="122" fill="#efe4d6">ISO 14971</text>
                                     <rect y="150" width="180" height="34" rx="8" fill="url(#qwen-bar)"/>
-                                    <text x="16" y="172" fill="#0f172a" font-weight="500">Qwen3-0.6B + LoRA</text>
+                                    <text x="16" y="172" fill="#1c1917" font-weight="500">Qwen3-0.6B + LoRA</text>
                                 </g>
                             </svg>
                         </div>
