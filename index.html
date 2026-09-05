@@ -4,34 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Reiter | Machine Learning Engineer</title>
+    <meta name="description" content="Adrian Reiter is a Machine Learning Engineer building edge inference systems, domain-specialized LLMs, and full-stack AI products.">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Adrian Reiter | Machine Learning Engineer">
+    <meta property="og:description" content="Edge inference, domain-specialized LLMs, and full-stack AI products. From research models to production systems.">
+    <meta property="og:url" content="https://adrianreiter.github.io/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='28' fill='%2360a5fa'%3EAR%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --surface-color: #f9fafb;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --accent-color: #2563eb;
-            --accent-hover: #1d4ed8;
-            --border-color: #e5e7eb;
-            --max-width: 1024px;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --surface-2: #f1f5f9;
+            --text: #0f172a;
+            --muted: #475569;
+            --faint: #94a3b8;
+            --accent: #2563eb;
+            --accent-2: #7c3aed;
+            --accent-soft: rgba(37, 99, 235, 0.10);
+            --border: #e2e8f0;
+            --header-bg: rgba(255, 255, 255, 0.82);
+            --shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.18);
+            --max-width: 1080px;
+            --radius: 14px;
+            --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0b1120;
+                --surface: #111a2e;
+                --surface-2: #172238;
+                --text: #e6edf7;
+                --muted: #a3b1c6;
+                --faint: #64748b;
+                --accent: #60a5fa;
+                --accent-2: #a78bfa;
+                --accent-soft: rgba(96, 165, 250, 0.14);
+                --border: #1f2b44;
+                --header-bg: rgba(11, 17, 32, 0.82);
+                --shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+            }
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
+            line-height: 1.65;
+            color: var(--text);
+            background-color: var(--bg);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
+
+        ::selection { background: var(--accent); color: #fff; }
 
         .container {
             max-width: var(--max-width);
@@ -39,292 +71,596 @@
             padding: 0 24px;
         }
 
-        /* Header */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ---------- Header ---------- */
         header {
-            padding: 24px 0;
+            padding: 18px 0;
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 100;
             border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, padding 0.3s;
         }
-        
+
         header.scrolled {
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
         }
 
         .logo {
-            font-size: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.025em;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            letter-spacing: 0;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 6px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            color: var(--muted);
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.2s;
+            padding: 6px 12px;
+            border-radius: 999px;
+            transition: color 0.2s, background-color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+            background: var(--surface-2);
         }
 
-        /* Hero */
+        /* ---------- Hero ---------- */
         .hero {
-            padding: 120px 0 100px;
+            position: relative;
+            padding: 110px 0 96px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, var(--border) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 100%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 720px;
+            height: 720px;
+            top: -320px;
+            right: -220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 65%);
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        .hero .container { position: relative; z-index: 1; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 6px 14px 6px 10px;
+            border-radius: 999px;
+            margin-bottom: 32px;
+        }
+
+        .eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 6vw, 4.25rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.03em;
-            color: var(--text-primary);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -0.035em;
+        }
+
+        .hero h1 .sub {
+            display: block;
+            margin-top: 14px;
+            font-size: 0.5em;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--muted);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 40px;
-            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin-bottom: 36px;
+            font-weight: 400;
         }
 
-        .cta-button {
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn {
             display: inline-flex;
             align-items: center;
-            background-color: var(--text-primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.2s;
+            font-weight: 600;
             font-size: 0.95rem;
+            transition: transform 0.15s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
         }
 
-        .cta-button:hover {
-            background-color: #000;
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn-primary {
+            background: var(--text);
+            color: var(--bg);
+            box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.5);
         }
 
-        /* Sections */
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover { border-color: var(--faint); }
+
+        .btn svg { width: 18px; height: 18px; }
+
+        .focus-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 28px;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .focus-row span::before {
+            content: "//";
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        /* ---------- Sections ---------- */
         .section {
-            padding: 100px 0;
-            border-top: 1px solid var(--border-color);
+            padding: 96px 0;
+            border-top: 1px solid var(--border);
         }
 
         .section-title {
-            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-color);
-            margin-bottom: 16px;
-            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            border-radius: 2px;
         }
 
         .section h2 {
-            font-size: 2.25rem;
+            font-size: clamp(1.9rem, 3.5vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 48px;
-            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
         }
 
-        /* About */
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
         .about-text {
             font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
+            color: var(--muted);
         }
 
-        /* Skills */
+        .about-text p + p { margin-top: 18px; }
+
+        .about-text strong { color: var(--text); font-weight: 600; }
+
+        .pillars { display: grid; gap: 14px; }
+
+        .pillar {
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            gap: 16px;
+            padding: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .pillar:hover { border-color: var(--accent); transform: translateX(4px); }
+
+        .pillar-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .pillar-icon svg { width: 22px; height: 22px; }
+
+        .pillar h3 { font-size: 1rem; margin-bottom: 4px; font-weight: 600; }
+
+        .pillar p { font-size: 0.92rem; color: var(--muted); }
+
+        /* ---------- Skills ---------- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
         }
 
-        .skill-category h3 {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-list li::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            margin-right: 12px;
-            opacity: 0.5;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .project-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden; /* For media containment */
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-            border-color: var(--accent-color);
-        }
-
-        /* Project Visuals */
-        .project-visual {
-            width: 100%;
-            height: 200px;
-            background-color: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .skill-category {
+            padding: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             position: relative;
             overflow: hidden;
         }
-        
-        .project-visual img {
+
+        .skill-category::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0.9;
+        }
+
+        .skill-category h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .skill-category .skill-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .chip {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--text);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ---------- Projects ---------- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .project-visual {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--surface-2);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-visual img, .project-visual svg {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        /* Placeholder styling */
-        .placeholder-text {
-            color: #9ca3af;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 0 20px;
+            display: block;
+            transition: transform 0.4s ease;
         }
 
+        .project-card:hover .project-visual img { transform: scale(1.03); }
+
         .project-content {
-            padding: 32px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-meta {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
         }
 
         .project-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .project-card p {
-            color: var(--text-secondary);
+            color: var(--muted);
             font-size: 0.95rem;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
         }
+
+        .project-card .chips { margin-bottom: 22px; }
 
         .project-links {
             display: flex;
-            gap: 16px;
+            gap: 18px;
+            margin-top: auto;
+            flex-wrap: wrap;
         }
 
         .project-links a {
-            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text);
             text-decoration: none;
             font-size: 0.875rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2px;
-            transition: border-color 0.2s;
-        }
-
-        .project-links a:hover {
-            border-color: var(--text-primary);
-        }
-        
-        /* Performance Badge */
-        .perf-badge {
-            background: #ecfdf5;
-            color: #059669;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
             font-weight: 600;
-            display: inline-block;
-            margin-bottom: 12px;
+            transition: color 0.2s;
         }
 
-        /* Contact */
+        .project-links a svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s;
+        }
+
+        .project-links a:hover { color: var(--accent); }
+        .project-links a:hover svg { transform: translate(2px, -2px); }
+
+        /* ---------- Contact ---------- */
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+            padding: 56px;
+            border-radius: 20px;
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .contact-card::after {
+            content: "";
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            right: -180px;
+            bottom: -260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.35), transparent 65%);
+            pointer-events: none;
+        }
+
+        .contact-card .section-title { color: #93c5fd; }
+        .contact-card .section-title::before { background: #93c5fd; }
+
+        .contact-card h2 { color: inherit; margin-bottom: 14px; }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin-bottom: 32px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .contact-card { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+            .contact-card p { color: var(--muted); }
+        }
+
         .contact-links {
             display: flex;
-            gap: 24px;
+            gap: 12px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-link {
             text-decoration: none;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
+            color: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--surface-color);
-            border-radius: 6px;
-            transition: background-color 0.2s;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 10px;
+            transition: background-color 0.2s, transform 0.15s, border-color 0.2s;
         }
 
         .contact-link:hover {
-            background: #e5e7eb;
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .nav-links {
-                display: none;
-            }
+        .contact-link svg { width: 18px; height: 18px; }
+
+        /* ---------- Footer ---------- */
+        footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        footer a { color: var(--muted); text-decoration: none; }
+        footer a:hover { color: var(--text); }
+
+        /* ---------- Reveal on scroll ---------- */
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .js .reveal.in { opacity: 1; transform: none; }
+
+        .reveal[data-delay="1"] { transition-delay: 0.08s; }
+        .reveal[data-delay="2"] { transition-delay: 0.16s; }
+        .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+            .projects-grid { grid-template-columns: minmax(0, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 72px 0 64px; }
+            .section { padding: 72px 0; }
+            .skills-grid { grid-template-columns: minmax(0, 1fr); }
+            .nav-links { gap: 0; }
+            .nav-links a { font-size: 0.82rem; padding: 6px 8px; }
+            .logo span.name { display: none; }
+            .contact-card { padding: 32px 24px; }
+            .project-content { padding: 22px; }
         }
     </style>
 </head>
 <body>
     <header id="header">
-        <nav class="container">
-            <a href="#" class="logo">Adrian Reiter</a>
+        <nav class="container" aria-label="Primary">
+            <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">AR</span><span class="name">Adrian Reiter</span></a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -334,56 +670,92 @@
         </nav>
     </header>
 
-    <main>
+    <main id="top">
         <section class="hero">
             <div class="container">
-                <h1>Machine Learning Engineer<br><span style="color: var(--text-secondary); font-weight: 400; font-size: 0.8em;">Bridging Research Models & Production Systems.</span></h1>
-                <p>I build scalable AI products and high-performance inference engines. Specialized in Deep Learning, Computer Vision, and Full-Stack AI Engineering.</p>
-                <a href="#projects" class="cta-button">View Projects</a>
+                <div class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>Open to ML engineering opportunities</div>
+                <h1 class="reveal" data-delay="1">Machine Learning Engineer
+                    <span class="sub">Bridging <span class="gradient-text">research models</span> and production systems.</span>
+                </h1>
+                <p class="reveal" data-delay="2">I build scalable AI products and high-performance inference engines. From C++ state estimation on embedded hardware to domain-tuned LLMs and the full-stack applications that put them in users' hands.</p>
+                <div class="hero-actions reveal" data-delay="3">
+                    <a href="#projects" class="btn btn-primary">View Projects
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                    </a>
+                    <a href="https://github.com/AdrianReiter" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+                <div class="focus-row reveal" data-delay="3">
+                    <span>Edge Inference</span>
+                    <span>Computer Vision</span>
+                    <span>LLM Fine-Tuning</span>
+                    <span>Full-Stack AI</span>
+                </div>
             </div>
         </section>
 
         <section id="about" class="section">
             <div class="container">
-                <div class="section-title">About Me</div>
-                <h2>Product-Driven Engineering</h2>
-                <p class="about-text">
-                    I am a Machine Learning Engineer focused on the intersection of AI research and real-world application. My work spans the entire stack from optimizing C++ inference engines for edge devices to architecting full-stack TypeScript applications that power complex AI workflows. I bridge the gap between "it works in a notebook" and "it works in production."
-                </p>
+                <div class="section-title reveal">About Me</div>
+                <h2 class="reveal">Product-driven engineering,<br>from notebook to production.</h2>
+                <div class="about-grid">
+                    <div class="about-text reveal" data-delay="1">
+                        <p>I am a Machine Learning Engineer focused on the intersection of AI research and real-world application. My work spans the entire stack, from optimizing <strong>C++ inference and state-estimation pipelines</strong> for edge devices to architecting <strong>full-stack TypeScript applications</strong> that power complex AI workflows.</p>
+                        <p>I care about the last mile: the difference between "it works in a notebook" and "it works in production" is where most of the engineering lives, and it is where I like to work.</p>
+                    </div>
+                    <div class="pillars">
+                        <div class="pillar reveal" data-delay="1">
+                            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+                            <div><h3>Edge &amp; Performance</h3><p>Multi-threaded C++ and Python pipelines tuned for Jetson-class hardware and real-time constraints.</p></div>
+                        </div>
+                        <div class="pillar reveal" data-delay="2">
+                            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6 3 3 0 0 1-3 3 4 4 0 0 1-8 0 3 3 0 0 1-3-3 3 3 0 0 1 0-6v-1a3 3 0 0 1 3-3V6a4 4 0 0 1 4-4z"/><path d="M12 2v20"/></svg></div>
+                            <div><h3>Domain-Specialized LLMs</h3><p>LoRA fine-tuning and synthetic data pipelines for regulated fields like medical device compliance.</p></div>
+                        </div>
+                        <div class="pillar reveal" data-delay="3">
+                            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 8l3 2.5L6 13M12 13h5"/></svg></div>
+                            <div><h3>Applied AI Products</h3><p>Next.js and LangChain applications with stateful agents, shipped as real SaaS with live users.</p></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="skills" class="section">
             <div class="container">
-                <div class="section-title">Expertise</div>
-                <h2>Technical Toolkit</h2>
+                <div class="section-title reveal">Expertise</div>
+                <h2 class="reveal">Technical toolkit</h2>
+                <p class="section-lead reveal">The tools I reach for across the stack, from sensor fusion in C++ to agentic web applications.</p>
                 <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>ML & HPC</h3>
-                        <ul class="skill-list">
-                            <li>Python, C++,</li>
-                            <li>PyTorch, TensorFlow, ONNX Runtime</li>
-                            <li>Model Quantization & Pruning</li>
-                            <li>Edge Deployment (TFLite)</li>
-                        </ul>
+                    <div class="skill-category reveal" data-delay="1">
+                        <h3>ML &amp; HPC</h3>
+                        <p class="skill-desc">Training, optimizing, and deploying models where latency matters.</p>
+                        <div class="chips">
+                            <span class="chip">Python</span><span class="chip">C++17</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">ONNX Runtime</span><span class="chip">TFLite</span><span class="chip">Quantization &amp; Pruning</span><span class="chip">LoRA Fine-Tuning</span><span class="chip">Hugging Face</span><span class="chip">YOLOv8</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category reveal" data-delay="2">
+                        <h3>Computer Vision &amp; Robotics</h3>
+                        <p class="skill-desc">Perception and state estimation for real-time systems.</p>
+                        <div class="chips">
+                            <span class="chip">OpenCV</span><span class="chip">Eigen</span><span class="chip">Ceres Solver</span><span class="chip">Kalman Filtering</span><span class="chip">Optical Flow</span><span class="chip">Object Tracking</span><span class="chip">Jetson</span><span class="chip">CMake</span>
+                        </div>
+                    </div>
+                    <div class="skill-category reveal" data-delay="3">
                         <h3>Full-Stack Application</h3>
-                        <ul class="skill-list">
-                            <li>TypeScript, JavaScript</li>
-                            <li>React, Next.js</li>
-                            <li>GraphQL, REST APIs</li>
-                            <li>LangChain, Gemini API</li>
-                        </ul>
+                        <p class="skill-desc">Turning models into products people actually use.</p>
+                        <div class="chips">
+                            <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">LangChain</span><span class="chip">Gemini API</span><span class="chip">GraphQL</span><span class="chip">REST</span><span class="chip">Vercel</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Infrastructure & MLOps</h3>
-                        <ul class="skill-list">
-                            <li>Docker, Kubernetes</li>
-                            <li>CI/CD (GitHub Actions)</li>
-                            <li>Cloud (AWS/GCP)</li>
-                            <li>SQL / NoSQL Databases</li>
-                        </ul>
+                    <div class="skill-category reveal" data-delay="3">
+                        <h3>Infrastructure &amp; MLOps</h3>
+                        <p class="skill-desc">Reproducible builds, containers, and telemetry in production.</p>
+                        <div class="chips">
+                            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions</span><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">MQTT</span><span class="chip">SQL / NoSQL</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -391,92 +763,228 @@
 
         <section id="projects" class="section">
             <div class="container">
-                <div class="section-title">Portfolio</div>
-                <h2>Featured Engineering</h2>
+                <div class="section-title reveal">Portfolio</div>
+                <h2 class="reveal">Featured engineering</h2>
+                <p class="section-lead reveal">Selected projects spanning embedded perception, specialized language models, and production AI products.</p>
                 <div class="projects-grid">
-                    <div class="project-card">
+
+                    <article class="project-card reveal" data-delay="1">
+                        <div class="project-visual" aria-hidden="true">
+                            <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                                <defs>
+                                    <linearGradient id="vio-bg" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/>
+                                    </linearGradient>
+                                    <linearGradient id="vio-path" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/>
+                                    </linearGradient>
+                                    <pattern id="vio-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.06"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="640" height="360" fill="url(#vio-bg)"/>
+                                <rect width="640" height="360" fill="url(#vio-grid)"/>
+                                <g fill="#93c5fd" fill-opacity="0.55">
+                                    <circle cx="92" cy="88" r="2.5"/><circle cx="150" cy="61" r="2"/><circle cx="214" cy="118" r="2.5"/><circle cx="268" cy="72" r="2"/>
+                                    <circle cx="330" cy="140" r="2.5"/><circle cx="392" cy="96" r="2"/><circle cx="448" cy="168" r="2.5"/><circle cx="512" cy="110" r="2"/>
+                                    <circle cx="560" cy="200" r="2.5"/><circle cx="130" cy="240" r="2"/><circle cx="240" cy="290" r="2.5"/><circle cx="360" cy="262" r="2"/>
+                                    <circle cx="470" cy="300" r="2.5"/><circle cx="580" cy="280" r="2"/><circle cx="60" cy="180" r="2"/><circle cx="300" cy="200" r="2"/>
+                                </g>
+                                <path d="M40 260 C 120 250, 160 170, 230 190 S 320 270, 390 210 S 470 110, 540 150 S 600 220, 620 120" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="10" stroke-linecap="round"/>
+                                <path d="M40 260 C 120 250, 160 170, 230 190 S 320 270, 390 210 S 470 110, 540 150 S 600 220, 620 120" fill="none" stroke="url(#vio-path)" stroke-width="3" stroke-linecap="round"/>
+                                <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.5" fill="none">
+                                    <path d="M230 190 l-14 -6 m14 6 l-6 -14"/><path d="M390 210 l-14 -6 m14 6 l-6 -14"/><path d="M540 150 l-14 -6 m14 6 l-6 -14"/>
+                                </g>
+                                <circle cx="620" cy="120" r="6" fill="#a78bfa"/>
+                                <circle cx="620" cy="120" r="14" fill="none" stroke="#a78bfa" stroke-opacity="0.5"/>
+                                <text x="36" y="330" font-family="JetBrains Mono, monospace" font-size="13" fill="#93c5fd" fill-opacity="0.85">ES-EKF · 15-state · 6-DOF trajectory</text>
+                            </svg>
+                        </div>
                         <div class="project-content">
+                            <div class="project-meta">C++17 · SENSOR FUSION</div>
+                            <h3>Visual-Inertial Odometry</h3>
+                            <p>Monocular VIO system built on a 15-state Error-State Extended Kalman Filter. Fuses high-rate IMU propagation with Shi-Tomasi / KLT feature tracks and RANSAC outlier rejection, triangulates lost features with Ceres, and renders the live 6-DOF trajectory in Pangolin. Runs on EuRoC and TUM-VI datasets with a full unit-test suite.</p>
+                            <div class="chips">
+                                <span class="chip">C++17</span><span class="chip">Eigen</span><span class="chip">OpenCV</span><span class="chip">Ceres</span><span class="chip">Pangolin</span><span class="chip">CMake</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AdrianReiter/Visual-Inertial-Odometry" target="_blank" rel="noopener">View Code
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-delay="2">
+                        <div class="project-visual" aria-hidden="true">
+                            <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                                <defs>
+                                    <linearGradient id="qwen-bg" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#0f172a"/>
+                                    </linearGradient>
+                                    <linearGradient id="qwen-bar" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="640" height="360" fill="url(#qwen-bg)"/>
+                                <g transform="translate(70 52)">
+                                    <rect width="300" height="256" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+                                    <g fill="#ffffff" fill-opacity="0.35">
+                                        <rect x="28" y="30" width="150" height="10" rx="5"/>
+                                        <rect x="28" y="58" width="240" height="8" rx="4"/><rect x="28" y="78" width="210" height="8" rx="4"/><rect x="28" y="98" width="232" height="8" rx="4"/>
+                                        <rect x="28" y="130" width="244" height="8" rx="4"/><rect x="28" y="150" width="190" height="8" rx="4"/><rect x="28" y="170" width="226" height="8" rx="4"/>
+                                        <rect x="28" y="202" width="200" height="8" rx="4"/>
+                                    </g>
+                                    <rect x="28" y="126" width="244" height="16" rx="4" fill="url(#qwen-bar)" fill-opacity="0.35"/>
+                                </g>
+                                <g transform="translate(400 90)" font-family="JetBrains Mono, monospace" font-size="13">
+                                    <rect width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
+                                    <text x="16" y="22" fill="#bfdbfe">ISO 13485</text>
+                                    <rect y="50" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
+                                    <text x="16" y="72" fill="#bfdbfe">IEC 62304</text>
+                                    <rect y="100" width="180" height="34" rx="8" fill="#ffffff" fill-opacity="0.08" stroke="#93c5fd" stroke-opacity="0.5"/>
+                                    <text x="16" y="122" fill="#bfdbfe">ISO 14971</text>
+                                    <rect y="150" width="180" height="34" rx="8" fill="url(#qwen-bar)"/>
+                                    <text x="16" y="172" fill="#0f172a" font-weight="500">Qwen3-0.6B + LoRA</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">LLM FINE-TUNING · REGULATORY</div>
                             <h3>Qwen3-Compliance-Medical-v1</h3>
-                            <p>Fine-tuned Qwen3-0.6B specialized in Medical Device Regulation (ISO 13485, IEC 62304, ISO 14971). Developed using LoRA and synthesized data via OCR and SOTA multimodal LLMs.</p>
+                            <p>Fine-tuned Qwen3-0.6B specialized in Medical Device Regulation (ISO 13485, IEC 62304, ISO 14971). Trained with LoRA on a synthesized dataset built from OCR'd regulatory documents and state-of-the-art multimodal LLMs. Published on Hugging Face.</p>
+                            <div class="chips">
+                                <span class="chip">Qwen3</span><span class="chip">LoRA</span><span class="chip">PyTorch</span><span class="chip">Hugging Face</span><span class="chip">Synthetic Data</span>
+                            </div>
                             <div class="project-links">
-                                <a href="https://huggingface.co/AdrianReiter/Qwen3-Compliance-Medical-v1" target="_blank">Hugging Face Model</a>
-                                <a href="https://github.com/AdrianReiter/Qwen3-Compliance-Medical-FineTuned" target="_blank">View Code</a>
+                                <a href="https://huggingface.co/AdrianReiter/Qwen3-Compliance-Medical-v1" target="_blank" rel="noopener">Hugging Face Model
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+                                <a href="https://github.com/AdrianReiter/Qwen3-Compliance-Medical-FineTuned" target="_blank" rel="noopener">View Code
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="project-card">
+                    <article class="project-card reveal" data-delay="1">
                         <div class="project-visual">
-                            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTliY2F4MDZkZjczcGlxYTFqMjJvMzQ2NzVoazNhcmw3aDAwNzk2dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1YzxjkOltU0SLXSXcS/giphy.gif" alt="UI Demo: ReguCheck">
+                            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTliY2F4MDZkZjczcGlxYTFqMjJvMzQ2NzVoazNhcmw3aDAwNzk2dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1YzxjkOltU0SLXSXcS/giphy.gif" alt="ReguCheck chat interface demo" loading="lazy">
                         </div>
                         <div class="project-content">
+                            <div class="project-meta">FULL-STACK AI · SAAS</div>
                             <h3>ReguCheck: AI Compliance Assistant</h3>
-                            <p>Full-stack AI SaaS for automated document compliance. Built with Next.js (TypeScript) and LangChain. Features a stateful chat interface and agents to deal with complex regulatory requirements.</p>
+                            <p>Full-stack AI SaaS for automated document compliance. Built with Next.js (TypeScript) and LangChain, featuring a stateful chat interface and agents that navigate complex regulatory requirements for medical devices.</p>
+                            <div class="chips">
+                                <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">LangChain</span><span class="chip">Agents</span><span class="chip">Vercel</span>
+                            </div>
                             <div class="project-links">
-                                <a href="https://github.com/AdrianReiter/regucheck">View Repo</a>
-                                <a href="https://regucheck-3ne0o3aal-adrian-reiters-projects.vercel.app/" target="_blank">Live Demo</a>
+                                <a href="https://regucheck-3ne0o3aal-adrian-reiters-projects.vercel.app/" target="_blank" rel="noopener">Live Demo
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+                                <a href="https://github.com/AdrianReiter/regucheck" target="_blank" rel="noopener">View Repo
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="project-card">
+                    <article class="project-card reveal" data-delay="2">
                         <div class="project-visual">
-                             <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGJvaGpkemZ0ZjB0NjNuZGdkaDU0NnBjbWFpYWkxemgycjgwNjYyYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XTzGZjbiADay4IRVId/giphy.gif" alt="Vision Analytics Demo" loading="lazy">
+                            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGJvaGpkemZ0ZjB0NjNuZGdkaDU0NnBjbWFpYWkxemgycjgwNjYyYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XTzGZjbiADay4IRVId/giphy.gif" alt="Vision Analytics Engine tracking demo" loading="lazy">
                         </div>
                         <div class="project-content">
+                            <div class="project-meta">COMPUTER VISION · EDGE</div>
                             <h3>Vision Analytics Engine</h3>
-                            <p>Multi-threaded industrial CV pipeline using YOLOv8 and ByteTrack. Performs real-time spatial (Zone Intrusion) and temporal (Dwell Time) analytics. Dockerized and optimized for edge inference (Jetson) with structured MQTT/JSON telemetry.</p>
+                            <p>Multi-threaded industrial CV pipeline using YOLOv8 and ByteTrack. Performs real-time spatial (Zone Intrusion) and temporal (Dwell Time) analytics. Dockerized and optimized for edge inference on Jetson with structured MQTT/JSON telemetry.</p>
+                            <div class="chips">
+                                <span class="chip">YOLOv8</span><span class="chip">ByteTrack</span><span class="chip">Python</span><span class="chip">Docker</span><span class="chip">Jetson</span><span class="chip">MQTT</span>
+                            </div>
                             <div class="project-links">
-                                <a href="https://github.com/AdrianReiter/VisionAnalyticsEngine">View Code</a>
+                                <a href="https://github.com/AdrianReiter/VisionAnalyticsEngine" target="_blank" rel="noopener">View Code
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section" style="border-bottom: none;">
+        <section id="contact" class="section">
             <div class="container">
-                <div class="section-title">Contact</div>
-                <h2>Let's Collaborate</h2>
-                <p style="margin-bottom: 32px; color: var(--text-secondary);">Open to opportunities in Machine Learning Product Engineering and High-Performance Computing.</p>
-                <div class="contact-links">
-                    <a href="mailto:areiter.de@gmail.com" class="contact-link">Email</a>
-                    <a href="https://www.linkedin.com/in/reiteradrian/" target="_blank" class="contact-link">LinkedIn</a>
-                    <a href="https://github.com/AdrianReiter" target="_blank" class="contact-link">GitHub</a>
-                    <a href="#" class="contact-link">Resume</a>
+                <div class="contact-card reveal">
+                    <div class="section-title">Contact</div>
+                    <h2>Let's build something that ships.</h2>
+                    <p>Open to opportunities in Machine Learning Product Engineering and High-Performance Computing. The fastest way to reach me is email.</p>
+                    <div class="contact-links">
+                        <a href="mailto:areiter.de@gmail.com" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                            Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/reiteradrian/" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/AdrianReiter" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://huggingface.co/AdrianReiter" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 10h.01M15.5 10h.01M8 14c1 1.5 2.5 2.2 4 2.2s3-.7 4-2.2"/></svg>
+                            Hugging Face
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 40px;">
-        <div class="container" style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
-            &copy; 2025 Adrian Reiter.
+    <footer>
+        <div class="container">
+            <span>&copy; <span id="year">2026</span> Adrian Reiter</span>
+            <a href="https://github.com/AdrianReiter/AdrianReiter.github.io" target="_blank" rel="noopener">Source on GitHub</a>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        document.documentElement.classList.add('js');
+
+        // Footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
         // Header scroll effect
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Reveal on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach((el) => io.observe(el));
+            // Safety net: never leave content hidden if the observer does not fire.
+            setTimeout(() => revealEls.forEach((el) => el.classList.add('in')), 2500);
+        } else {
+            revealEls.forEach((el) => el.classList.add('in'));
+        }
+
+        // Active nav link highlighting
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = [...navLinks].map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        if ('IntersectionObserver' in window && sections.length) {
+            const navIo = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px' });
+            sections.forEach((s) => navIo.observe(s));
+        }
     </script>
 </body>
 </html>
